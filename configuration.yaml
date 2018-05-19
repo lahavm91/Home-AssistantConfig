@@ -1,0 +1,82 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 32.0667
+  longitude: 34.7667
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Asia/Jerusalem
+  # Customization file
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  # Secrets are defined in the file secrets.yaml
+  # api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Weather prediction
+sensor:
+  - platform: yr
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+
+switch:
+  - platform: broadlink
+    host: 192.168.100.110
+    mac: 34:EA:34:E0:B9:DC
+    type: rm_mini
+    switches:
+      tv_phillips:
+        friendly_name: "Switch for the TV"
+        command_off: 'JgCwAFYeDR4OEA0QDR4cEA0QDRANEA4PDg8OEA0QDRAODw4PDhAcDw4eDRANAAqbVx0NHg8PDRANHhwQDg8NEA8ODg8ODw4QDg8NEA8ODw4OEB0ODx0NEA8ACphWHg4eDRAODw4dHBAODw4PDhANEA0QDRAODw4QDRANEA0QHBANHg4PDgAKmlYeDh4NEA0QDh0cEA0QDg8ODw4QDRANEA4PDg8OEA0QDRAcEA0eDg8OAA0FAAAAAAAAAAA='
+        command_on: 'JgBUAFYeDR4ODw4QKiwOEA0QDRANEA4PDhANEA0QDRAODw4PHQ8OHg0QDQAKm1cdDB8PDg8PKysPDw4PDg8ODw8ODw8ODw4PDg8NEA8OHg4PHQ4PDgANBQAAAAA='
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
